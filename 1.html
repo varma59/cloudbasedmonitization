@@ -1,87 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API Call Test</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>API Call Test</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
 
-    .container {
-      max-width: 800px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      position: relative;
-      overflow: hidden; /* Ensure the overlay doesn't extend beyond the container */
-    }
+            .container {
+                max-width: 800px;
+                margin: 50px auto;
+                padding: 20px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                position: relative;
+                overflow: hidden;
+            }
 
-    .center {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+            .center {
+                font-size: 2rem;
+                text-align: center;
+                margin-bottom: 20px;
+            }
 
-    #result {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
+            #result {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
 
-    iframe {
-      width: 100%;
-      height: 315px;
-      border: 0;
-      border-radius: 8px;
-    }
+            iframe {
+                width: 100%;
+                height: 315px;
+                border: 0;
+                border-radius: 8px;
+            }
 
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0); /* Transparent black background */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-size: 6px;
-      pointer-events: none;
-      z-index: 1; /* Ensure the overlay is on top */
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2 class="center">API Call for IP Tracking</h2>
-    <p id="result"></p>
-
-    <div class="overlay" id="overlay">varma59</div>
-    <iframe src="https://www.youtube.com/embed/R_FuIcXQSow?si=tmTShh801FK1umJQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-    <script>
-      // Define the API endpoint URL
-      const apiUrl = "https://varma59.azurewebsites.net/api/HttpTrigger1?code=SDxan2NubJEDHHtIGqMUH705DEJmUFH8X8XJy9uHq4oVAzFuk4Uoxw==";
-
-      // Make an AJAX request to the API endpoint
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", apiUrl);
-      xhr.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-          const response = JSON.parse(xhr.responseText);
-          document.getElementById("result").innerHTML = "Your IP address is " + response.ip;
-          document.getElementById("overlay").style.display = "none"; // Hide the overlay when data is loaded
-        }
-      };
-      xhr.send();
-    </script>
-  </div>
-</body>
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+                font-size: 6px;
+                pointer-events: none;
+                z-index: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="center">API Call for IP Tracking</h2>
+            <p id="result"></p>
+            <div class="overlay" id="overlay">varma59</div>
+            <iframe src="https://www.youtube.com/embed/R_FuIcXQSow?si=tmTShh801FK1umJQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <script>
+                const apiUrl = "https://varma59.azurewebsites.net/api/HttpTrigger1?code=SDxan2NubJEDHHtIGqMUH705DEJmUFH8X8XJy9uHq4oVAzFuk4Uoxw==";
+                const xhr = new XMLHttpRequest();
+                xhr.open("GET", apiUrl);
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        const response = xhr.responseText;
+                        document.getElementById("result").innerHTML = response;
+                        document.getElementById("overlay").style.display = "none";
+                    }
+                };
+                xhr.send();
+            </script>
+        </div>
+    </body>
 </html>
